@@ -56,23 +56,7 @@
 	swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
 
 	[svTableView addGestureRecognizer:swipeGesture];
-
-	arrYardValue = [[NSArray alloc] initWithObjects:
-					@"50", @"60", @"70", @"80", @"90", @"100", @"120", @"140", @"150", @"160",
-					@"170", @"180", @"190", @"200", @"210", @"220", @"230", @"240", @"250", @"260",nil];
-	[UIView animateWithDuration:0.1 animations:^{
-		tvMeterToYard.alpha = 0.0f;
-		tvYardToMeter.alpha = 0.0f;
-		svTableView.alpha = 0.0f;
-	} completion:^(BOOL finished) {
-		[tvYardToMeter reloadData];
-		[tvMeterToYard reloadData];
-		[UIView animateWithDuration:0.1 animations:^{
-			tvMeterToYard.alpha = 1.0f;
-			tvYardToMeter.alpha = 1.0f;
-			svTableView.alpha = 1.0f;
-		}];
-	}];
+	[self updateTableView];
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -88,9 +72,24 @@
 	[_tfInputDistance resignFirstResponder];
 }
 - (void) swipeTable:(UIGestureRecognizer*)gesture {
-	NSLog(@"%s", __FUNCTION__);
+#warning TODO : 테이블뷰 페이징 기능
 }
 #pragma mark - User Methods
+- (void) updateTableView {
+	[UIView animateWithDuration:0.1 animations:^{
+		tvLeftTableView.alpha = 0.0f;
+		tvRightTableView.alpha = 0.0f;
+		svTableView.alpha = 0.0f;
+	} completion:^(BOOL finished) {
+		[tvLeftTableView reloadData];
+		[tvRightTableView reloadData];
+		[UIView animateWithDuration:0.1 animations:^{
+			tvLeftTableView.alpha = 1.0f;
+			tvRightTableView.alpha = 1.0f;
+			svTableView.alpha = 1.0f;
+		}];
+	}];
+}
 - (IBAction)onYardToMeter:(id)sender {
 	isYardToMeter = YES;
 	if ([_tfInputDistance.placeholder isEqualToString:@"미터 입력"] || [_tfInputDistance.placeholder isEqualToString:@"yard"]) {
@@ -98,20 +97,7 @@
 	}
 	
 	[self changeInput];
-	[UIView animateWithDuration:0.2 animations:^{
-		tvMeterToYard.alpha = 0.0f;
-		tvYardToMeter.alpha = 0.0f;
-		svTableView.alpha = 0.0f;
-	} completion:^(BOOL finished) {
-		[tvYardToMeter reloadData];
-		[tvMeterToYard reloadData];
-		[UIView animateWithDuration:0.2 animations:^{
-			tvMeterToYard.alpha = 1.0f;
-			tvYardToMeter.alpha = 1.0f;
-			svTableView.alpha = 1.0f;
-		}];
-	}];
-	
+	[self updateTableView];
 }
 - (IBAction)onMeterToYard:(id)sender {
 	isYardToMeter = NO;
@@ -119,19 +105,7 @@
 		_tfInputDistance.placeholder = @"미터 입력";
 	}
 	[self changeInput];
-	[UIView animateWithDuration:0.2 animations:^{
-		tvMeterToYard.alpha = 0.0f;
-		tvYardToMeter.alpha = 0.0f;
-		svTableView.alpha = 0.0f;
-	} completion:^(BOOL finished) {
-		[tvYardToMeter reloadData];
-		[tvMeterToYard reloadData];
-		[UIView animateWithDuration:0.2 animations:^{
-			tvMeterToYard.alpha = 1.0f;
-			tvYardToMeter.alpha = 1.0f;
-			svTableView.alpha = 1.0f;
-		}];
-	}];
+	[self updateTableView];
 }
 
 -(void) changeInput {
@@ -164,7 +138,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -177,6 +151,13 @@
 	UILabel *lblResultUnit = (UILabel *)[cell viewWithTag:4];
 	
 	float result;
+	
+	if (tableView == tvLeftTableView) {
+		lblValue.text = [NSString stringWithFormat:@"%ld",(indexPath.row+1) * 10];
+	} else {
+		lblValue.text = [NSString stringWithFormat:@"%ld",((indexPath.row+1) * 10)+100];
+	}
+	
 	if (isYardToMeter) {
 		lblValueUnit.text = @"yd";
 		lblResultUnit.text = @"m";
@@ -186,36 +167,66 @@
 		lblResultUnit.text = @"yd";
 		result = [lblValue.text intValue] * kMETERTOYARD;
 	}
-	
-	if (tableView == tvYardToMeter) {
-		lblValue.text = [arrYardValue objectAtIndex:indexPath.row];
-	} else {
-		lblValue.text = [arrYardValue objectAtIndex:indexPath.row+10];
-	}
+
 	
 	lblResult.text = [NSString stringWithFormat:@"%.3f", result];
-    
-    // Configure the cell...
+
     
     return cell;
 }
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[DetailViewController alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
-
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	NSLog(@"%s", __FUNCTION__);
+	float y =scrollView.contentOffset.y;
+	if (scrollView == tvLeftTableView){
+		if (y < 0) y = 0;
+		if	(y > scrollView.contentSize.height - tvLeftTableView.frame.size.height){
+			y = scrollView.contentSize.height - tvLeftTableView.frame.size.height;
+		}
+		if (scrollView.contentOffset.y > scrollView.contentSize.height - tvLeftTableView.frame.size.height) {
+			if (scrollView.contentSize.height - tvLeftTableView.frame.size.height > 0) {
+				[scrollView setContentOffset:CGPointMake(0, scrollView.contentSize.height - tvLeftTableView.frame.size.height)];
+				[UIView animateWithDuration:0.2 animations:^{
+					vRightTableEnd.alpha = 1.0;
+				}];
+
+			}
+		}
+		
+		[tvRightTableView setContentOffset:CGPointMake(0, y)];
+		if (tvRightTableView.contentOffset.y < 0) {
+			[tvRightTableView setContentOffset:CGPointMake(0, 0)];
+		}
+	} else {
+		if (y < 0) y = 0;
+		
+		if	(y > scrollView.contentSize.height - tvRightTableView.frame.size.height){
+			y = scrollView.contentSize.height - tvRightTableView.frame.size.height;
+		}
+		if (scrollView.contentOffset.y < 0) {
+			[scrollView setContentOffset:CGPointMake(0, 0)];
+			[UIView animateWithDuration:0.2 animations:^{
+				vLeftTableEnd.alpha = 1.0;
+			}];
+		}
+		
+		[tvLeftTableView setContentOffset:CGPointMake(0, y)];
+		if (tvLeftTableView.contentOffset.y < 0) {
+			[tvLeftTableView setContentOffset:CGPointMake(0, 0)];
+			
+		}
+	}
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+    //ensure that the end of scroll is fired.
+    [self performSelector:@selector(scrollViewDidEndScrollingAnimation:) withObject:nil afterDelay:0.3];
+
 }
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+	[UIView animateWithDuration:0.2 animations:^{
+		vLeftTableEnd.alpha = 0.0;
+		vRightTableEnd.alpha = 0.0;
+	}];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
 @end

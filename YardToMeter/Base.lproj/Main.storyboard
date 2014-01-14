@@ -62,7 +62,7 @@
                                 <rect key="frame" x="0.0" y="208" width="320" height="360"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-Yk-hHv">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-Yk-hHv">
                                         <rect key="frame" x="0.0" y="0.0" width="159" height="360"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +111,7 @@
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="i8X-LF-joO"/>
                                         </connections>
                                     </tableView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-7y-HiH">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-7y-HiH">
                                         <rect key="frame" x="160" y="0.0" width="160" height="360"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +159,20 @@
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="vcX-kA-JUl"/>
                                         </connections>
                                     </tableView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tableView_over" translatesAutoresizingMaskIntoConstraints="NO" id="YFk-Ve-tVI">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bI-qK-yUw">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="4"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICh-P4-ewg">
+                                        <rect key="frame" x="160" y="356" width="160" height="4"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
@@ -171,8 +185,10 @@
                         <outlet property="lblResultDistance" destination="D4a-2b-9lS" id="yVl-Cb-Fno"/>
                         <outlet property="svTableView" destination="rB3-Eh-IMf" id="J1U-4q-zxx"/>
                         <outlet property="tfInputDistance" destination="s5c-Ep-Qyq" id="IJh-fL-pXB"/>
-                        <outlet property="tvMeterToYard" destination="0UT-7y-HiH" id="E1K-f1-alO"/>
-                        <outlet property="tvYardToMeter" destination="ZmG-Yk-hHv" id="Vrl-8u-4WD"/>
+                        <outlet property="tvLeftTableView" destination="ZmG-Yk-hHv" id="IIx-fP-nHJ"/>
+                        <outlet property="tvRightTableView" destination="0UT-7y-HiH" id="96D-4v-7FI"/>
+                        <outlet property="vLeftTableEnd" destination="0bI-qK-yUw" id="s9M-24-t7A"/>
+                        <outlet property="vRightTableEnd" destination="ICh-P4-ewg" id="P6L-HS-fdS"/>
                         <outlet property="vTextfieldBackView" destination="UKV-iY-ytF" id="KVO-w1-d95"/>
                     </connections>
                 </viewController>
@@ -180,6 +196,9 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="tableView_over" width="320" height="360"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
