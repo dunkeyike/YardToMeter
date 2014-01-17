@@ -22,6 +22,8 @@
     [super viewDidLoad];
 	isYardToMeter = YES;
 	
+	_tfInputDistance.placeholder = NSLocalizedString(@"Input Yard", @"Input Yard");
+	
 	vTextfieldBackView.layer.borderWidth = 1;
 	vTextfieldBackView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 	vTextfieldBackView.backgroundColor = [UIColor whiteColor];
@@ -58,6 +60,9 @@
 	[svTableView addGestureRecognizer:swipeGesture];
 	[self updateTableView];
 
+	
+	NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+	NSLog(@"language : %@", language);
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -92,8 +97,8 @@
 }
 - (IBAction)onYardToMeter:(id)sender {
 	isYardToMeter = YES;
-	if ([_tfInputDistance.placeholder isEqualToString:@"미터 입력"] || [_tfInputDistance.placeholder isEqualToString:@"yard"]) {
-		_tfInputDistance.placeholder = @"야드 입력";
+	if ([_tfInputDistance.placeholder isEqualToString:NSLocalizedString(@"Input Meter", @"Input Meter")] || _tfInputDistance.placeholder == nil) {
+		_tfInputDistance.placeholder = NSLocalizedString(@"Input Yard", @"Input Yard");
 	}
 	
 	[self changeInput];
@@ -101,8 +106,8 @@
 }
 - (IBAction)onMeterToYard:(id)sender {
 	isYardToMeter = NO;
-	if ([_tfInputDistance.placeholder isEqualToString:@"야드 입력"] || [_tfInputDistance.placeholder isEqualToString:@"yard"]) {
-		_tfInputDistance.placeholder = @"미터 입력";
+	if ([_tfInputDistance.placeholder isEqualToString:NSLocalizedString(@"Input Yard", @"Input Yard")] || _tfInputDistance.placeholder == nil) {
+		_tfInputDistance.placeholder = NSLocalizedString(@"Input Meter", @"Input Meter");
 	}
 	[self changeInput];
 	[self updateTableView];
