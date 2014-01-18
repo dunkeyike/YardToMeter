@@ -24,6 +24,8 @@
 		C03D6412188516F2003DBA30 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C03D640F188516F2003DBA30 /* SVProgressHUD.bundle */; };
 		C03D6413188516F2003DBA30 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D6411188516F2003DBA30 /* SVProgressHUD.m */; };
 		C03D641D18851FDA003DBA30 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C03D641C18851FDA003DBA30 /* JVFloatLabeledTextField.m */; };
+		C069CC36188918B5004EE0B1 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C069CC35188918B5004EE0B1 /* SecondViewController.m */; };
+		C0C5C561188624F900553B81 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0C5C563188624F900553B81 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,16 @@
 		C03D6411188516F2003DBA30 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C03D641B18851FDA003DBA30 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
 		C03D641C18851FDA003DBA30 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		C069CC34188918B5004EE0B1 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		C069CC35188918B5004EE0B1 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		C0C5C562188624F900553B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0C5C564188624FE00553B81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0C5C5651886251B00553B81 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0C5C5661886251B00553B81 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C0C5C5671886251B00553B81 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C0C5C56818862B4400553B81 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0C5C56918862B4400553B81 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C0C5C56A18862B4400553B81 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +139,10 @@
 				C03D63EB188513D5003DBA30 /* Main.storyboard */,
 				C03D63EE188513D5003DBA30 /* ViewController.h */,
 				C03D63EF188513D5003DBA30 /* ViewController.m */,
+				C069CC34188918B5004EE0B1 /* SecondViewController.h */,
+				C069CC35188918B5004EE0B1 /* SecondViewController.m */,
 				C03D63F1188513D5003DBA30 /* Images.xcassets */,
+				C0C5C563188624F900553B81 /* Localizable.strings */,
 				C03D63E0188513D5003DBA30 /* Supporting Files */,
 			);
 			path = YardToMeter;
@@ -240,6 +255,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				ko,
 			);
 			mainGroup = C03D63CD188513D5003DBA30;
 			productRefGroup = C03D63D7188513D5003DBA30 /* Products */;
@@ -257,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C5C561188624F900553B81 /* Localizable.strings in Resources */,
 				C03D63F2188513D5003DBA30 /* Images.xcassets in Resources */,
 				C03D63E4188513D5003DBA30 /* InfoPlist.strings in Resources */,
 				C03D63ED188513D5003DBA30 /* Main.storyboard in Resources */,
@@ -279,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C069CC36188918B5004EE0B1 /* SecondViewController.m in Sources */,
 				C03D63F0188513D5003DBA30 /* ViewController.m in Sources */,
 				C03D6413188516F2003DBA30 /* SVProgressHUD.m in Sources */,
 				C03D63EA188513D5003DBA30 /* AppDelegate.m in Sources */,
@@ -310,6 +329,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C03D63E3188513D5003DBA30 /* en */,
+				C0C5C5661886251B00553B81 /* ja */,
+				C0C5C56918862B4400553B81 /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -326,8 +347,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				C03D6402188513D5003DBA30 /* en */,
+				C0C5C5671886251B00553B81 /* ja */,
+				C0C5C56A18862B4400553B81 /* ko */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C0C5C563188624F900553B81 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0C5C562188624F900553B81 /* Base */,
+				C0C5C564188624FE00553B81 /* en */,
+				C0C5C5651886251B00553B81 /* ja */,
+				C0C5C56818862B4400553B81 /* ko */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -492,6 +526,7 @@
 				C03D640A188513D5003DBA30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C03D640B188513D5003DBA30 /* Build configuration list for PBXNativeTarget "YardToMeterTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +535,7 @@
 				C03D640D188513D5003DBA30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

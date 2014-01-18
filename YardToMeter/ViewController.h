@@ -12,13 +12,11 @@
 	BOOL					isYardToMeter;
 	UILabel					*lblDistanceUnit;
 	IBOutlet UIView			*vTextfieldBackView;
-	IBOutlet UITableView	*tvYardToMeter;
-	IBOutlet UITableView	*tvMeterToYard;
-	
+	IBOutlet UITableView	*tvLeftTableView;
+	IBOutlet UITableView	*tvRightTableView;
 	IBOutlet UIScrollView	*svTableView;
-	
-	NSArray					*arrYardValue;
-	NSArray					*arrMeterValue;
+	IBOutlet UIView			*vLeftTableEnd;
+	IBOutlet UIView			*vRightTableEnd;
 }
 @property (weak, nonatomic) IBOutlet UIButton					*btnYardToMeter;
 @property (weak, nonatomic) IBOutlet UIButton					*btnMeterToYard;

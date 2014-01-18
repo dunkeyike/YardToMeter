@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  YardToMeter
+
+  Created by Dunkey on 2014. 1. 15..
+  Copyright (c) 2014년 Dunkey. All rights reserved.
+*/
+"Yard" = "야드";
+"Meter" = "미터";
+"Input Yard" = "야드 입력";
+"Input Meter" = "미터 입력";
