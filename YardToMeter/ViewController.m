@@ -38,8 +38,7 @@
 	lblDistanceUnit.textAlignment = NSTextAlignmentLeft;
 	lblDistanceUnit.textColor = [UIColor blueColor];
 	lblDistanceUnit.font = [UIFont boldSystemFontOfSize:18];
-	lblDistanceUnit.frame = CGRectMake(
-									   _lblResultDistance.frame.origin.x + _lblResultDistance.frame.size.width,
+	lblDistanceUnit.frame = CGRectMake(_lblResultDistance.frame.origin.x + _lblResultDistance.frame.size.width,
 									   (_lblResultDistance.frame.origin.y + _lblResultDistance.frame.size.height) - 26,
 									   40,
 									   22);
@@ -52,6 +51,7 @@
 	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(disappearKeyboard:)];
 	[self.view addGestureRecognizer:tapGesture];
 	
+	[self.navigationController.navigationBar setTintColor:[UIColor blueColor]];
 	
 	UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeTable:)];
 	swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
@@ -59,11 +59,6 @@
 
 	[svTableView addGestureRecognizer:swipeGesture];
 	[self updateTableView];
-
-	
-	NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-	NSLog(@"language : %@", language);
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning

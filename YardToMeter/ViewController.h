@@ -14,9 +14,7 @@
 	IBOutlet UIView			*vTextfieldBackView;
 	IBOutlet UITableView	*tvLeftTableView;
 	IBOutlet UITableView	*tvRightTableView;
-	
 	IBOutlet UIScrollView	*svTableView;
-	
 	IBOutlet UIView			*vLeftTableEnd;
 	IBOutlet UIView			*vRightTableEnd;
 }
